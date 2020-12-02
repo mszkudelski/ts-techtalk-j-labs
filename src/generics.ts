@@ -3,13 +3,10 @@ interface BaseProduct {
   quantity: number;
 }
 
-export class Cart<
-  Product extends BaseProduct,
-  Items extends Map<string, Product> | Product[] = Product[]
-> {
-  constructor(private items: Items) {}
+export class Cart {
+  constructor(private items: BaseProduct[]) {}
 
-  addItem(item: Product) {
+  addItem(item: BaseProduct) {
     if (this.items instanceof Map) {
       this.items.set(item.id, item);
     } else if (this.items instanceof Array) {
@@ -17,7 +14,7 @@ export class Cart<
     }
   }
 
-  getItem(id: string): Product {
+  getItem(id: string): BaseProduct {
     if (this.items instanceof Map) {
       return this.items.get(id);
     } else if (this.items instanceof Array) {

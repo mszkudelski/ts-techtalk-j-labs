@@ -3,10 +3,10 @@
 type Keys = keyof {
   name: string;
   age: number;
-}; // 'name' | 'age'
+};
 
 const person = { name: "Jan", age: 95 };
-type KeysPerson = keyof typeof person; // 'name' | 'age'
+type KeysPerson = keyof typeof person;
 
 // === Required and Partial ===
 
@@ -16,21 +16,20 @@ interface User {
   age: number;
 }
 
-declare function editUser(user: Required<User>);
-declare function patchUser(user: Partial<User>);
+declare function editUser(user);
+declare function patchUser(user);
 
 // === Pick and Omit ===
 
-type RequiredUserId = Required<Pick<User, "id">>;
+type RequiredUserId = any;
 
-declare function editUser(user: User & RequiredUserId);
-declare function patchUser(user: Partial<User> & RequiredUserId);
+declare function editUser(user);
+declare function patchUser(user);
 
 // === generic version ===
 
-type RequireFields<T, K extends keyof T> = Required<Pick<T, K>>;
+type RequireFields<T, K extends keyof T> = any;
+type RequireOnly<T, K extends keyof T> = any;
 
-type RequireOnly<T, K extends keyof T> = Partial<T> & Required<Pick<T, K>>;
-
-declare function editUser(user: User & RequireFields<User, "id">);
-declare function patchUser(user: RequireOnly<User, "id">);
+declare function editUser(user);
+declare function patchUser(user);

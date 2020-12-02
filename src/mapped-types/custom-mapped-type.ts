@@ -9,10 +9,8 @@ interface UserData {
   companyName: string;
 }
 
-type MaxLengths<T extends {}> = { readonly [P in keyof T]: number };
-
 class Component {
-  readonly formValidationMaxLengths: MaxLengths<UserData> = Object.freeze({
+  readonly formValidationMaxLengths = {
     city: 20,
     street: 50,
     postCode: 6,
@@ -21,15 +19,17 @@ class Component {
     phoneNumber: 16,
     secondaryPhoneNumber: 20,
     companyName: 30,
-  });
+  };
+
+  constructor() {
+    this.formValidationMaxLengths.city = 111; // should be error
+  }
 }
 
 // === alternative solution ===
 
 class ComponentAlt {
-  readonly formValidationMaxLengths = Object.freeze<
-    Record<keyof UserData, number>
-  >({
+  readonly formValidationMaxLengths = {
     city: 20,
     street: 50,
     postCode: 6,
@@ -38,5 +38,5 @@ class ComponentAlt {
     phoneNumber: 16,
     secondaryPhoneNumber: 20,
     companyName: 30,
-  });
+  };
 }

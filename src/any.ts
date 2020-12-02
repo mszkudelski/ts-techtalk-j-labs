@@ -6,12 +6,12 @@ export function useHook(arg: string, deps: any[] = []) {
   // ...
 }
 
-type CartItem = any;
-
 class Cart {
-  constructor(private items: CartItem[]) {}
+  constructor(private items: any[]) {}
 
-  addItem(item: CartItem) {}
+  addItem(item: any) {}
 
-  getItem(id: string): CartItem {}
+  getItem(id: string): any {
+    return this.items.find((item) => item.id === id);
+  }
 }
