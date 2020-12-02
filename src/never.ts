@@ -1,4 +1,4 @@
-export function logError(error: Error) {
-    console.error(error);
-    throw error;
+export function logError(error: Error): never {
+  console.error(error);
+  throw error;
 }
