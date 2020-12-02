@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "baseUrl": "./",
+    "lib": [
+      "ES2018", "dom"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
