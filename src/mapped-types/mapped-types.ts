@@ -14,22 +14,23 @@ interface User {
   id?: string;
   name: string;
   age: number;
+  email?: string;
 }
 
-declare function editUser(user);
-declare function patchUser(user);
+function editUser(user) {}
+function patchUser(user) {}
 
 // === Pick and Omit ===
 
 type RequiredUserId = any;
 
-declare function editUser(user);
-declare function patchUser(user);
+// function editUser(user) {}
+// function patchUser(user) {}
 
 // === generic version ===
 
 type RequireFields<T, K extends keyof T> = any;
 type RequireOnly<T, K extends keyof T> = any;
 
-declare function editUser(user);
-declare function patchUser(user);
+// function editUser(user) {}
+// function patchUser(user) {}
