@@ -27,12 +27,11 @@ function patchUser(user: Partial<User>) {
 
 // === Pick and Omit ===
 
-type RequiredUserId = any;
 interface EmailUser extends User {
   email?: string;
 }
 
-type RequiredUserId = Required<Pick<EmailUser, "id">>;
+type RequiredUserId = any;
 
 function editUser2(user: EmailUser & RequiredUserId) {
   console.log(user.id);
@@ -50,5 +49,13 @@ function patchUser2(user: Partial<EmailUser> & RequiredUserId) {
 type RequireFields<T, K extends keyof T> = any;
 type RequireOnly<T, K extends keyof T> = any;
 
-// function editUser(user) {}
-// function patchUser(user) {}
+function editUser3(user: EmailUser & RequiredUserId) {
+  console.log(user.id);
+  console.log(user.age);
+  console.log(user.email);
+}
+function patchUser3(user: Partial<EmailUser> & RequiredUserId) {
+  console.log(user.id);
+  console.log(user.age);
+  console.log(user.email);
+}

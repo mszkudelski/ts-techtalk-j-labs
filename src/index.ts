@@ -50,18 +50,15 @@ const product = { id: "asd-123", quantity: 1, name: "apple" };
 
 const arrCart = new Cart([product]);
 
-// const errorCart = new Cart([{...product, id: 123}]); // should cause error
+// new Cart([{...product, id: 123}]); // should cause error
 
-const mapCart = new Cart<Product, Map<string, Product>>(
-  new Map([["asd-123", product]])
-);
+// const mapCart = new Cart(new Map([["asd-123", product]]));
 
-// const mapErrorCart = new Cart<Product, Map<number, Product>>( // should cause error
-//     new Map([[123, product]])
-// );
+// new Cart<Product, Map<number, Product>>(new Map([[123, product]])); // should cause error
 
 arrCart.addItem(product);
-console.log(arrCart.getItem("asd-123"));
+const returnedProduct = arrCart.getItem("asd-123");
+// returnedProduct.name; // should NOT cause errorg
 
-mapCart.addItem(product);
-console.log(mapCart.getItem("asd-123"));
+// mapCart.addItem(product);
+// console.log(mapCart.getItem("asd-123"));

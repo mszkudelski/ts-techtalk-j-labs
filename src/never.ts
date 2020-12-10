@@ -1,9 +1,9 @@
-export function logError(error: Error): never {
+export function logError(error: Error) {
   console.error(error);
   throw error;
 }
 
-function func(a: 1|2|3) {
+function func(a) {
   switch (a) {
     case 1:
       return a;
