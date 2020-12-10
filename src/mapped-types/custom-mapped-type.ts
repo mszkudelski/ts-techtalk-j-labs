@@ -39,4 +39,8 @@ class ComponentAlt {
     secondaryPhoneNumber: 20,
     companyName: 30,
   };
+
+  constructor() {
+    this.formValidationMaxLengths.city = 111; // should be error
+  }
 }
