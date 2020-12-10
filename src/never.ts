@@ -3,14 +3,15 @@ export function logError(error: Error): never {
   throw error;
 }
 
-function func(a) {
+function func(a: 1|2|3) {
   switch (a) {
     case 1:
-      break;
+      return a;
     case 2:
-      console.log(a);
-      break;
+      return a;
+    case 3:
+      return a;
     default:
-      console.log(a);
+      return a;
   }
 }
