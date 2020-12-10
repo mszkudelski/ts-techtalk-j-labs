@@ -16,21 +16,46 @@ interface User {
   age: number;
 }
 
-declare function editUser(user: Required<User>);
-declare function patchUser(user: Partial<User>);
+function editUser(user: Required<User>) {
+  console.log(user.id);
+}
+function patchUser(user: Partial<User>) {
+  console.log(user.name);
+  console.log(user.id);
+}
 
 // === Pick and Omit ===
 
-type RequiredUserId = Required<Pick<User, "id">>;
+interface EmailUser extends User {
+  email?: string;
+}
 
-declare function editUser(user: User & RequiredUserId);
-declare function patchUser(user: Partial<User> & RequiredUserId);
+type RequiredUserId = Required<Pick<EmailUser, "id">>;
+
+function editUser2(user: EmailUser & RequiredUserId) {
+  console.log(user.id);
+  console.log(user.age);
+  console.log(user.email);
+}
+function patchUser2(user: Partial<EmailUser> & RequiredUserId) {
+  console.log(user.id);
+  console.log(user.age);
+  console.log(user.email);
+}
 
 // === generic version ===
 
-type RequireFields<T, K extends keyof T> = Required<Pick<T, K>>;
+type RequireFields<T, K extends keyof T> = T & Required<Pick<T, K>>;
 
 type RequireOnly<T, K extends keyof T> = Partial<T> & Required<Pick<T, K>>;
 
-declare function editUser(user: User & RequireFields<User, "id">);
-declare function patchUser(user: RequireOnly<User, "id">);
+function editUser3(user: RequireFields<EmailUser, "id">) {
+  console.log(user.id);
+  console.log(user.age);
+  console.log(user.email);
+}
+function patchUser3(user: RequireOnly<EmailUser, "id">) {
+  console.log(user.id);
+  console.log(user.age);
+  console.log(user.email);
+}

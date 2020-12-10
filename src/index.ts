@@ -50,11 +50,17 @@ interface Product {
 
 const product = { id: "asd-123", quantity: 1, name: "apple" };
 
-const arrCart = new Cart<Product>([product]);
+const arrCart = new Cart([product]);
+
+// const errorCart = new Cart([{...product, id: 123}]); // should cause error
 
 const mapCart = new Cart<Product, Map<string, Product>>(
   new Map([["asd-123", product]])
 );
+
+// const mapErrorCart = new Cart<Product, Map<number, Product>>( // should cause error
+//     new Map([[123, product]])
+// );
 
 arrCart.addItem(product);
 console.log(arrCart.getItem("asd-123"));
