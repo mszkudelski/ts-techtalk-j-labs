@@ -58,7 +58,7 @@ const arrCart = new Cart([product]);
 
 arrCart.addItem(product);
 const returnedProduct = arrCart.getItem("asd-123");
-// returnedProduct.name; // should NOT cause errorg
+// returnedProduct.name; // should NOT cause error
 
 // mapCart.addItem(product);
 // console.log(mapCart.getItem("asd-123"));
