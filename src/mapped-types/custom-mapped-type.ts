@@ -23,20 +23,3 @@ class Component {
     companyName: 30,
   });
 }
-
-// === alternative solution ===
-
-class ComponentAlt {
-  readonly formValidationMaxLengths = Object.freeze<
-    Record<keyof UserData, number>
-  >({
-    city: 20,
-    street: 50,
-    postCode: 6,
-    firstName: 20,
-    lastName: 20,
-    phoneNumber: 16,
-    secondaryPhoneNumber: 20,
-    companyName: 30,
-  });
-}
