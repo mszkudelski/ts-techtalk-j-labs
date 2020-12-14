@@ -52,13 +52,6 @@ const arrCart = new Cart([product]);
 
 // new Cart([{...product, id: 123}]); // should cause error
 
-// const mapCart = new Cart(new Map([["asd-123", product]]));
-
-// new Cart<Product, Map<number, Product>>(new Map([[123, product]])); // should cause error
-
 arrCart.addItem(product);
 const returnedProduct = arrCart.getItem("asd-123");
 // returnedProduct.name; // should NOT cause error
-
-// mapCart.addItem(product);
-// console.log(mapCart.getItem("asd-123"));

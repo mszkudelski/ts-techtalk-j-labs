@@ -1,13 +1,3 @@
-// === keyof ===
-
-type Keys = keyof {
-  name: string;
-  age: number;
-};
-
-const person = { name: "Jan", age: 95 };
-type KeysPerson = keyof typeof person;
-
 // === Required and Partial ===
 
 interface User {
